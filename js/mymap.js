@@ -51,13 +51,8 @@ var MapPoint = canvas.selectAll(".Point")
   .append("circle")
   .attr("r", 2)
   .attr("fill", d3.rgb(127,174,236))
-  .attr("cx", function(d) {console.log(MapProjection(d.Lon)); return MapProjection(d.Lon)}
-  .attr("cy", function(d) {console.log(MapProjection(d.Lat)); return MapProjection(d.Lat)})
-
-  MapP(d3.geoCircle()
-    .center([function(d) {return d.Lon;}, function(d) {return d.Lat;}])
-    .radius(0.0008)))
-
+  .attr("cx", function(d) {console.log("Lon, Lat: " + MapProjection([d.Lon, d.Lat])); return MapProjection([d.Lon, d.Lat])[0];})
+  .attr("cy", function(d) {return MapProjection([d.Lon, d.Lat])[1];})
   .attr("class", "Point");
 
 //canvas.append("path")
