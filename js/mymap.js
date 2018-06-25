@@ -37,16 +37,10 @@ canvas.append("path")
 
 
 // add circles to map based on csv file
-d3.csv("https://raw.githubusercontent.com/pacunningham821/map1/master/locationsLL.csv").then(function(data){
-
-
-// adding circles to the Map
-//var MapPoint = d3.geoCircle()
-//  .center([-73.968101, 40.792889])
-//  .radius(.0008);
+d3.csv("https://raw.githubusercontent.com/pacunningham821/map1/master/activityLocations.csv").then(function(data){
 
 var MapPoint = canvas.selectAll(".Point")
-  .data(data)
+  .data(data.filter(function(data) {return data.SSO == 212000721}))
   .enter()
   .append("circle")
   .attr("r", 2)
@@ -54,9 +48,5 @@ var MapPoint = canvas.selectAll(".Point")
   .attr("cx", function(d) {console.log("Lon, Lat: " + MapProjection([d.Lon, d.Lat])); return MapProjection([d.Lon, d.Lat])[0];})
   .attr("cy", function(d) {return MapProjection([d.Lon, d.Lat])[1];})
   .attr("class", "Point");
-
-//canvas.append("path")
-//  .attr("d", MapPath(MapPoint()))
-//  .attr("fill", d3.rgb(127, 174, 236));
 
 }); // close of d3.csv callback function
