@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 1000 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    height = 1100 - margin.top - margin.bottom;
 
 
 var canvas = d3.select(".MAP").append("svg")
@@ -17,9 +17,9 @@ var ManhattanGJ = {
 
 // Making manhattan projection and MapPath
 var MapProjection = d3.geoEquirectangular()
-    .scale(200000)
+    .scale(270000)
     .center([-73.960681, 40.781319])
-    .translate([500, 400]);
+    .translate([width/2, height/2]);
   //.fitExtent([[10,10], [width, height]], ManhattanGJ);
 
 
@@ -44,7 +44,7 @@ var MapPoint = canvas.selectAll(".Point")
   .data(data)
   .enter()
   .append("circle")
-  .attr("r", 2)
+  .attr("r", 1.8)
   .attr("fill", d3.rgb(127,174,236))
   .attr("cx", function(d) {console.log("Lon, Lat: " + MapProjection([d.NewLon, d.NewLat])); return MapProjection([d.NewLon, d.NewLat])[0];})
   .attr("cy", function(d) {return MapProjection([d.NewLon, d.NewLat])[1];})
