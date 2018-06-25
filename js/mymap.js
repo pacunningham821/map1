@@ -45,8 +45,8 @@ var MapPoint = canvas.selectAll(".Point")
   .append("circle")
   .attr("r", 2)
   .attr("fill", d3.rgb(127,174,236))
-  .attr("cx", function(d) {console.log("Lon, Lat: " + MapProjection([d.Lon, d.Lat])); return MapProjection([d.Lon, d.Lat])[0];})
-  .attr("cy", function(d) {return MapProjection([d.Lon, d.Lat])[1];})
+  .attr("cx", function(d) {console.log("Lon, Lat: " + MapProjection([d.NewLon, d.NewLat])); return MapProjection([d.NewLon, d.NewLat])[0];})
+  .attr("cy", function(d) {return MapProjection([d.NewLon, d.NewLat])[1];})
   .attr("class", "Point");
 
 }); // close of d3.csv callback function
