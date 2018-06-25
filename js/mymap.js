@@ -40,7 +40,8 @@ canvas.append("path")
 d3.csv("https://raw.githubusercontent.com/pacunningham821/map1/master/activityLocations.csv").then(function(data){
 
 var MapPoint = canvas.selectAll(".Point")
-  .data(data.filter(function(data) {return data.SSO == 212000721}))
+  //.data(data.filter(function(data) {return data.SSO == 212000721}))
+  .data(data)
   .enter()
   .append("circle")
   .attr("r", 2)
